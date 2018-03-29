@@ -51,7 +51,7 @@
           </span>
         </div>
       </div>
-      <div class="actionBar">
+      <div class="actionBar" ng-if="$ctrl.adminAccess">
         <div class="btn-group" role="group" aria-label="...">
           <button type="button" class="btn btn-sm btn-success" ng-click="$ctrl.startAction($ctrl.state.selectedItems)"
             ng-disabled="$ctrl.state.selectedItemCount === 0 || $ctrl.state.noStoppedItemsSelected">
@@ -86,7 +86,7 @@
           <i class="fa fa-plus space-right" aria-hidden="true"></i>Add container
         </button>
       </div>
-      <div class="searchBar" ng-if="$ctrl.state.displayTextFilter">
+      <div class="searchBar" ng-if="$ctrl.state.displayTextFilter && $ctrl.adminAccess">
         <i class="fa fa-search searchIcon" aria-hidden="true"></i>
         <input type="text" class="searchInput" ng-model="$ctrl.state.textFilter" placeholder="Search..." auto-focus>
       </div>

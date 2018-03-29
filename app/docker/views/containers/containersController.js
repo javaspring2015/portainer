@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-  .controller('ContainersController', ['$q', '$scope', '$state', '$filter', '$transition$', 'ContainerService', 'SystemService', 'Notifications', 'ModalService', 'EndpointProvider',
-  function ($q, $scope, $state, $filter, $transition$, ContainerService, SystemService, Notifications, ModalService, EndpointProvider) {
+  .controller('ContainersController', ['$q', '$scope', '$state', '$filter', '$transition$', 'ContainerService', 'SystemService', 'Notifications', 'ModalService', 'EndpointProvider', 'StateManager',
+  function ($q, $scope, $state, $filter, $transition$, ContainerService, SystemService, Notifications, ModalService, EndpointProvider, StateManager) {
   $scope.state = {
     publicURL: EndpointProvider.endpointPublicURL()
   };
@@ -157,6 +157,12 @@ angular.module('portainer.docker')
       Notifications.error('Failure', err, 'Unable to retrieve containers');
       $scope.containers = [];
     });
+	
+	if (StateManager.getState().application.authentication) {
+      var userDetails = Authentication.getUserDetails();
+      var isAdmin = userDetails.role === 1 ? true: false;
+      $scope.isAdmin = isAdmin;
+    }
   }
 
   initView();
