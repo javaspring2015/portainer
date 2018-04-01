@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-  .controller('ContainersController', ['$q', '$scope', '$state', '$filter', '$transition$', 'ContainerService', 'SystemService', 'Notifications', 'ModalService', 'EndpointProvider', 'StateManager',
-  function ($q, $scope, $state, $filter, $transition$, ContainerService, SystemService, Notifications, ModalService, EndpointProvider, StateManager) {
+  .controller('ContainersController', ['$q', '$scope', '$state', '$filter', '$transition$', 'ContainerService', 'SystemService', 'Notifications', 'ModalService', 'EndpointProvider', 'StateManager', 'Authentication',
+  function ($q, $scope, $state, $filter, $transition$, ContainerService, SystemService, Notifications, ModalService, EndpointProvider, StateManager, Authentication) {
   $scope.state = {
     publicURL: EndpointProvider.endpointPublicURL()
   };
