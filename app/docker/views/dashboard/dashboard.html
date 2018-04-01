@@ -3,7 +3,7 @@
   <rd-header-content>总览</rd-header-content>
 </rd-header>
 
-<div class="row" ng-if="$ctrl.adminAccess">
+<div class="row" ng-if="adminAccess">
   <div class="col-lg-12 col-md-12 col-xs-12" ng-if="applicationState.endpoint.mode.provider !== 'DOCKER_SWARM'">
     <rd-widget>
       <rd-widget-header icon="fa-tachometer-alt" title="Node info"></rd-widget-header>
@@ -90,7 +90,7 @@
 </div>
 
 <div class="row">
-  <div class="col-xs-12 col-md-6" ng-if="applicationState.endpoint.mode.provider === 'DOCKER_SWARM_MODE' && applicationState.endpoint.mode.role === 'MANAGER' && $ctrl.adminAccess">
+  <div class="col-xs-12 col-md-6" ng-if="applicationState.endpoint.mode.provider === 'DOCKER_SWARM_MODE' && applicationState.endpoint.mode.role === 'MANAGER' && adminAccess">
     <a ui-sref="docker.stacks">
       <rd-widget>
         <rd-widget-body>
@@ -103,7 +103,7 @@
       </rd-widget>
     </a>
   </div>
-  <div class="col-xs-12 col-md-6" ng-if="applicationState.endpoint.mode.provider === 'DOCKER_SWARM_MODE' && applicationState.endpoint.mode.role === 'MANAGER' && $ctrl.adminAccess">
+  <div class="col-xs-12 col-md-6" ng-if="applicationState.endpoint.mode.provider === 'DOCKER_SWARM_MODE' && applicationState.endpoint.mode.role === 'MANAGER' && adminAccess">
     <a ui-sref="docker.services">
       <rd-widget>
         <rd-widget-body>
@@ -133,7 +133,7 @@
       </rd-widget>
     </a>
   </div>
-  <div class="col-xs-12 col-md-6" ng-if="$ctrl.adminAccess">
+  <div class="col-xs-12 col-md-6" ng-if="adminAccess">
     <a ui-sref="docker.images">
       <rd-widget>
         <rd-widget-body>
@@ -149,7 +149,7 @@
       </rd-widget>
     </a>
   </div>
-  <div class="col-xs-12 col-md-6" ng-if="$ctrl.adminAccess">
+  <div class="col-xs-12 col-md-6" ng-if="adminAccess">
     <a ui-sref="docker.volumes">
       <rd-widget>
         <rd-widget-body>
@@ -162,7 +162,7 @@
       </rd-widget>
     </a>
   </div>
-  <div class="col-xs-12 col-md-6" ng-if="$ctrl.adminAccess">
+  <div class="col-xs-12 col-md-6" ng-if="adminAccess">
     <a ui-sref="docker.networks">
       <rd-widget>
         <rd-widget-body>
