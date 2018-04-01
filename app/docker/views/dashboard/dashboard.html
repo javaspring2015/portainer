@@ -1,9 +1,9 @@
 <rd-header>
-  <rd-header-title title="Home"></rd-header-title>
-  <rd-header-content>Dashboard</rd-header-content>
+  <rd-header-title title="课件交互信息平台"></rd-header-title>
+  <rd-header-content>总览</rd-header-content>
 </rd-header>
 
-<div class="row">
+<div class="row" ng-if="$ctrl.adminAccess">
   <div class="col-lg-12 col-md-12 col-xs-12" ng-if="applicationState.endpoint.mode.provider !== 'DOCKER_SWARM'">
     <rd-widget>
       <rd-widget-header icon="fa-tachometer-alt" title="Node info"></rd-widget-header>
@@ -90,7 +90,7 @@
 </div>
 
 <div class="row">
-  <div class="col-xs-12 col-md-6" ng-if="applicationState.endpoint.mode.provider === 'DOCKER_SWARM_MODE' && applicationState.endpoint.mode.role === 'MANAGER'">
+  <div class="col-xs-12 col-md-6" ng-if="applicationState.endpoint.mode.provider === 'DOCKER_SWARM_MODE' && applicationState.endpoint.mode.role === 'MANAGER' && $ctrl.adminAccess">
     <a ui-sref="docker.stacks">
       <rd-widget>
         <rd-widget-body>
@@ -103,7 +103,7 @@
       </rd-widget>
     </a>
   </div>
-  <div class="col-xs-12 col-md-6" ng-if="applicationState.endpoint.mode.provider === 'DOCKER_SWARM_MODE' && applicationState.endpoint.mode.role === 'MANAGER'">
+  <div class="col-xs-12 col-md-6" ng-if="applicationState.endpoint.mode.provider === 'DOCKER_SWARM_MODE' && applicationState.endpoint.mode.role === 'MANAGER' && $ctrl.adminAccess">
     <a ui-sref="docker.services">
       <rd-widget>
         <rd-widget-body>
@@ -124,16 +124,16 @@
             <i class="fa fa-server"></i>
           </div>
           <div class="pull-right">
-            <div><i class="fa fa-heartbeat space-right green-icon"></i>{{ containerData.running }} running</div>
-            <div><i class="fa fa-heartbeat space-right red-icon"></i>{{ containerData.stopped }} stopped</div>
+            <div><i class="fa fa-heartbeat space-right green-icon"></i>{{ containerData.running }} 运行</div>
+            <div><i class="fa fa-heartbeat space-right red-icon"></i>{{ containerData.stopped }} 停止</div>
           </div>
           <div class="title">{{ containerData.total }}</div>
-          <div class="comment">Containers</div>
+          <div class="comment">课件</div>
         </rd-widget-body>
       </rd-widget>
     </a>
   </div>
-  <div class="col-xs-12 col-md-6">
+  <div class="col-xs-12 col-md-6" ng-if="$ctrl.adminAccess">
     <a ui-sref="docker.images">
       <rd-widget>
         <rd-widget-body>
@@ -149,7 +149,7 @@
       </rd-widget>
     </a>
   </div>
-  <div class="col-xs-12 col-md-6">
+  <div class="col-xs-12 col-md-6" ng-if="$ctrl.adminAccess">
     <a ui-sref="docker.volumes">
       <rd-widget>
         <rd-widget-body>
@@ -162,7 +162,7 @@
       </rd-widget>
     </a>
   </div>
-  <div class="col-xs-12 col-md-6">
+  <div class="col-xs-12 col-md-6" ng-if="$ctrl.adminAccess">
     <a ui-sref="docker.networks">
       <rd-widget>
         <rd-widget-body>

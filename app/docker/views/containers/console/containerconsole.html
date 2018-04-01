@@ -1,5 +1,5 @@
 <rd-header>
-  <rd-header-title title="容器控制台"></rd-header-title>
+  <rd-header-title title="课件控制台"></rd-header-title>
   <!--rd-header-content ng-if="state.loaded">
     <a ui-sref="docker.containers">Containers</a> &gt; <a ui-sref="docker.containers.container({id: container.Id})">{{ container.Name|trimcontainername }}</a> &gt; 控制台
   </rd-header-content-->
@@ -57,7 +57,7 @@
             </div>
           </div>
           <div ng-if="state.connected">
-			<label>用户<code>{{ ::formValues.user || 'default user' }}</code>在容器里执行，使用命令 <code>{{ formValues.isCustomCommand ? formValues.customCommand : formValues.command }}</code></label>
+			<label>用户<code>{{ ::formValues.user || 'default user' }}</code>，使用命令 <code>{{ formValues.isCustomCommand ? formValues.customCommand : formValues.command }}</code></label>
             <button type="button" class="btn btn-default" ng-click="disconnect()">断开连接</button>
           </div>
         </form>

@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('DashboardController', ['$scope', '$q', 'Container', 'ContainerHelper', 'Image', 'Network', 'Volume', 'SystemService', 'ServiceService', 'StackService', 'Notifications',
-function ($scope, $q, Container, ContainerHelper, Image, Network, Volume, SystemService, ServiceService, StackService, Notifications) {
+.controller('DashboardController', ['$scope', '$q', 'Container', 'ContainerHelper', 'Image', 'Network', 'Volume', 'SystemService', 'ServiceService', 'StackService', 'Notifications', 'StateManager', 'Authentication',
+function ($scope, $q, Container, ContainerHelper, Image, Network, Volume, SystemService, ServiceService, StackService, Notifications, StateManager, Authentication) {
 
   $scope.containerData = {
     total: 0
@@ -87,6 +87,12 @@ function ($scope, $q, Container, ContainerHelper, Image, Network, Volume, System
     }, function(e) {
       Notifications.error('Failure', e, 'Unable to load dashboard data');
     });
+	
+	if (StateManager.getState().application.authentication) {
+      var userDetails = Authentication.getUserDetails();
+      var isAdmin = userDetails.role === 1 ? true: false;
+      $scope.isAdmin = isAdmin;
+    }
   }
 
   initView();

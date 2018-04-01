@@ -1,16 +1,16 @@
 <rd-header>
-  <rd-header-title title="容器列表">
+  <rd-header-title title="课件列表">
     <a data-toggle="tooltip" title="Refresh" ui-sref="docker.containers" ui-sref-opts="{reload: true}">
       <i class="fa fa-sync" aria-hidden="true"></i>
     </a>
   </rd-header-title>
-  <rd-header-content>容器</rd-header-content>
+  <rd-header-content>课件</rd-header-content>
 </rd-header>
 
 <div class="row">
   <div class="col-sm-12" ng-if="containers">
     <containers-datatable
-      title="容器" title-icon="fa-server"
+      title="课件" title-icon="fa-server"
       dataset="containers" table-key="containers"
       order-by="Status" show-text-filter="true"
       show-ownership-column="applicationState.application.authentication"

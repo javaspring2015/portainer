@@ -19,7 +19,7 @@
                 <div class="menuContent">
                   <div class="md-checkbox">
                     <input id="setting_container_trunc" type="checkbox" ng-model="$ctrl.settings.truncateContainerName" ng-change="$ctrl.onSettingsContainerNameTruncateChange()"/>
-                    <label for="setting_container_trunc">截短容器名字</label>
+                    <label for="setting_container_trunc">截短课件名字</label>
                   </div>
                 </div>
                 <div class="menuHeader">
@@ -133,7 +133,7 @@
                 </div>
               </th>
               <th ng-if="$ctrl.settings.showQuickActionStats || $ctrl.settings.showQuickActionLogs || $ctrl.settings.showQuickActionConsole || $ctrl.settings.showQuickActionInspect">
-                操作
+                开始课程
               </th>
               <th ng-if="$ctrl.adminAccess">
                 <a ng-click="$ctrl.changeOrderBy('StackName')">
@@ -224,7 +224,7 @@
               <td colspan="8" class="text-center text-muted">加载...</td>
             </tr>
             <tr ng-if="$ctrl.state.filteredDataSet.length === 0">
-              <td colspan="8" class="text-center text-muted">没有容器.</td>
+              <td colspan="8" class="text-center text-muted">没有课件.</td>
             </tr>
           </tbody>
         </table>

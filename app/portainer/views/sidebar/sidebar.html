@@ -9,12 +9,12 @@
   </div>
   <div class="sidebar-content">
   <ul class="sidebar">
-    <li class="sidebar-title"><span>Active endpoint</span></li>
-    <li class="sidebar-title">
+    <li class="sidebar-title" ng-if="isAdmin"><span>Active endpoint</span></li>
+    <li class="sidebar-title" ng-if="isAdmin">
       <select class="select-endpoint form-control" ng-options="endpoint.Name for endpoint in endpoints" ng-model="activeEndpoint" ng-change="switchEndpoint(activeEndpoint)">
       </select>
     </li>
-    <li class="sidebar-title"><span>Endpoint actions</span></li>
+    <li class="sidebar-title"><span>操作</span></li>
     <docker-sidebar-content
       endpoint-api-version="applicationState.endpoint.apiVersion"
       swarm-management="applicationState.endpoint.mode.provider === 'DOCKER_SWARM_MODE' && applicationState.endpoint.mode.role === 'MANAGER'"
