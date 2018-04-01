@@ -57,7 +57,6 @@
             </div>
           </div>
           <div ng-if="state.connected">
-            <label>Exec into container as <code>{{ ::formValues.user || 'default user' }}</code> using command <code>{{ formValues.isCustomCommand ? formValues.customCommand : formValues.command }}</code></label>
 			<label>用户<code>{{ ::formValues.user || 'default user' }}</code>在容器里执行，使用命令 <code>{{ formValues.isCustomCommand ? formValues.customCommand : formValues.command }}</code></label>
             <button type="button" class="btn btn-default" ng-click="disconnect()">断开连接</button>
           </div>
