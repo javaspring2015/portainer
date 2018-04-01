@@ -199,7 +199,7 @@
                 <div class="btn-group btn-group-xs" role="group" aria-label="..." style="display:inline-flex;">
                   <a ng-if="$ctrl.settings.showQuickActionStats && $ctrl.adminAccess" style="margin: 0 2.5px;" ui-sref="docker.containers.container.stats({id: item.Id})" title="Stats"><i class="fa fa-chart-area space-right" aria-hidden="true"></i></a>
                   <a ng-if="$ctrl.settings.showQuickActionLogs && $ctrl.adminAccess" style="margin: 0 2.5px;" ui-sref="docker.containers.container.logs({id: item.Id})" title="Logs"><i class="fa fa-file-alt space-right" aria-hidden="true"></i></a>
-                  <a ng-if="$ctrl.settings.showQuickActionConsole" style="margin: 0 2.5px;" ui-sref="docker.containers.container.console({id: item.Id})" title="Console"><i class="fa fa-terminal space-right" aria-hidden="true"></i></a>
+                  <a ng-if="$ctrl.settings.showQuickActionConsole" style="margin: 0 2.5px;" ui-sref="docker.containers.container.console({id: item.Id})" title="控制台"><i class="fa fa-terminal space-right" aria-hidden="true"></i></a>
                   <a ng-if="$ctrl.settings.showQuickActionInspect && $ctrl.adminAccess" style="margin: 0 2.5px;" ui-sref="docker.containers.container.inspect({id: item.Id})" title="Inspect"><i class="fa fa-info-circle space-right" aria-hidden="true"></i></a>
                 </div>
               </td>
