@@ -133,7 +133,7 @@
                 </div>
               </th>
               <th ng-if="$ctrl.settings.showQuickActionStats || $ctrl.settings.showQuickActionLogs || $ctrl.settings.showQuickActionConsole || $ctrl.settings.showQuickActionInspect">
-                开始课程
+                操作
               </th>
               <th ng-if="$ctrl.adminAccess">
                 <a ng-click="$ctrl.changeOrderBy('StackName')">
@@ -199,7 +199,7 @@
                 <div class="btn-group btn-group-xs" role="group" aria-label="..." style="display:inline-flex;">
                   <a ng-if="$ctrl.settings.showQuickActionStats && $ctrl.adminAccess" style="margin: 0 2.5px;" ui-sref="docker.containers.container.stats({id: item.Id})" title="Stats"><i class="fa fa-chart-area space-right" aria-hidden="true"></i></a>
                   <a ng-if="$ctrl.settings.showQuickActionLogs && $ctrl.adminAccess" style="margin: 0 2.5px;" ui-sref="docker.containers.container.logs({id: item.Id})" title="Logs"><i class="fa fa-file-alt space-right" aria-hidden="true"></i></a>
-                  <a ng-if="$ctrl.settings.showQuickActionConsole" style="margin: 0 2.5px;" ui-sref="docker.containers.container.console({id: item.Id})" title="控制台"><i class="fa fa-terminal space-right" aria-hidden="true"></i></a>
+                  <a ng-if="$ctrl.settings.showQuickActionConsole" style="margin: 0 2.5px;" ui-sref="docker.containers.container.console({id: item.Id})" title="开始课件">开始</a>
                   <a ng-if="$ctrl.settings.showQuickActionInspect && $ctrl.adminAccess" style="margin: 0 2.5px;" ui-sref="docker.containers.container.inspect({id: item.Id})" title="Inspect"><i class="fa fa-info-circle space-right" aria-hidden="true"></i></a>
                 </div>
               </td>
@@ -240,7 +240,7 @@
                 每页
               </span>
               <select class="form-control" ng-model="$ctrl.state.paginatedItemLimit" ng-change="$ctrl.changePaginationLimit()">
-                <option value="0">All</option>
+                <option value="0">全部</option>
                 <option value="10">10</option>
                 <option value="25">25</option>
                 <option value="50">50</option>
