@@ -1,4 +1,4 @@
-<rd-header>
+<rd-header ng-if="isAdmin">
   <rd-header-title title="Stacks list">
     <a data-toggle="tooltip" title="Refresh" ui-sref="docker.stacks" ui-sref-opts="{reload: true}">
       <i class="fa fa-sync" aria-hidden="true"></i>
@@ -7,7 +7,7 @@
   <rd-header-content>Stacks</rd-header-content>
 </rd-header>
 
-<div class="row" ng-if="state.displayInformationPanel">
+<div class="row" ng-if="state.displayInformationPanel && isAdmin">
   <div class="col-sm-12">
     <rd-widget>
       <rd-widget-header icon="fa-info-circle" title="Information"></rd-widget-header>
@@ -37,7 +37,7 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row" ng-if="isAdmin">
   <div class="col-sm-12">
     <stacks-datatable
     title="Stacks" title-icon="fa-th-list"
