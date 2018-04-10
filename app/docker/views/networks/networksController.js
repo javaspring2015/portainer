@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('NetworksController', ['$scope', '$state', 'NetworkService', 'Notifications',
-function ($scope, $state, NetworkService, Notifications) {
+.controller('NetworksController', ['$scope', '$state', 'NetworkService', 'Notifications', 'Authentication',
+function ($scope, $state, NetworkService, Notifications, Authentication) {
 
   $scope.removeAction = function (selectedItems) {
     var actionCount = selectedItems.length;
@@ -24,6 +24,8 @@ function ($scope, $state, NetworkService, Notifications) {
   };
 
   function initView() {
+	$scope.isAdmin = isAdminRole(Authentication);
+	
     NetworkService.networks(true, true, true, true)
     .then(function success(data) {
       $scope.networks = data;

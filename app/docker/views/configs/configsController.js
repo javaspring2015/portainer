@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('ConfigsController', ['$scope', '$state', 'ConfigService', 'Notifications',
-function ($scope, $state, ConfigService, Notifications) {
+.controller('ConfigsController', ['$scope', '$state', 'ConfigService', 'Notifications', 'Authentication',
+function ($scope, $state, ConfigService, Notifications, Authentication) {
 
   $scope.removeAction = function (selectedItems) {
     var actionCount = selectedItems.length;
@@ -24,6 +24,7 @@ function ($scope, $state, ConfigService, Notifications) {
   };
 
   function initView() {
+	$scop.isAdmin = isAdminRole(Authentication);
     ConfigService.configs()
     .then(function success(data) {
       $scope.configs = data;

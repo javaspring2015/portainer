@@ -48,3 +48,9 @@ function initAnalytics(Analytics, $rootScope) {
     Analytics.pageView();
   });
 }
+
+function isAdminRole(Authentication) {
+  var userDetails = Authentication.getUserDetails();
+  var isAdmin = userDetails.role === 1 ? true: false;
+  return isAdmin;
+}

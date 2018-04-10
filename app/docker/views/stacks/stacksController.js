@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('StacksController', ['$scope', '$state', 'Notifications', 'StackService', 'ModalService',
-function ($scope, $state, Notifications, StackService, ModalService) {
+.controller('StacksController', ['$scope', '$state', 'Notifications', 'StackService', 'ModalService', 'Authentication',
+function ($scope, $state, Notifications, StackService, ModalService, Authentication) {
   $scope.state = {
     displayInformationPanel: false,
     displayExternalStacks: true
@@ -38,6 +38,8 @@ function ($scope, $state, Notifications, StackService, ModalService) {
   }
 
   function initView() {
+	$scope.isAdmin = isAdminRole(Authentication);
+	
     StackService.stacks(true)
     .then(function success(data) {
       var stacks = data;
