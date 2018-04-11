@@ -1,4 +1,4 @@
-<rd-header>
+<rd-header ng-if="isAdmin">
   <rd-header-title title="Network list">
     <a data-toggle="tooltip" title="Refresh" ui-sref="docker.networks" ui-sref-opts="{reload: true}">
       <i class="fa fa-sync" aria-hidden="true"></i>
@@ -7,7 +7,7 @@
   <rd-header-content>Networks</rd-header-content>
 </rd-header>
 
-<div class="row">
+<div class="row" ng-if="isAdmin">
   <div class="col-sm-12">
     <networks-datatable
     title="Networks" title-icon="fa-sitemap"

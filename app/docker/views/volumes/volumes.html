@@ -1,4 +1,4 @@
-<rd-header>
+<rd-header ng-if="isAdmin">
   <rd-header-title title="Volume list">
     <a data-toggle="tooltip" title="Refresh" ui-sref="docker.volumes" ui-sref-opts="{reload: true}">
       <i class="fa fa-sync" aria-hidden="true"></i>
@@ -7,7 +7,7 @@
   <rd-header-content>Volumes</rd-header-content>
 </rd-header>
 
-<div class="row">
+<div class="row" ng-if="isAdmin">
   <div class="col-sm-12">
     <volumes-datatable
     title="Volumes" title-icon="fa-cubes"

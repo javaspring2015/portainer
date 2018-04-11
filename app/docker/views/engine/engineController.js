@@ -1,8 +1,10 @@
 angular.module('portainer.docker')
-.controller('EngineController', ['$q', '$scope', 'SystemService', 'Notifications',
-function ($q, $scope, SystemService, Notifications) {
+.controller('EngineController', ['$q', '$scope', 'SystemService', 'Notifications', 'Authentication',
+function ($q, $scope, SystemService, Notifications, Authentication) {
 
   function initView() {
+	$scope.isAdmin = isAdminRole(Authentication);
+	
     $q.all({
       version: SystemService.version(),
       info: SystemService.info()

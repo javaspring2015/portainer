@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('SettingsController', ['$scope', '$state', 'Notifications', 'SettingsService', 'StateManager', 'DEFAULT_TEMPLATES_URL',
-function ($scope, $state, Notifications, SettingsService, StateManager, DEFAULT_TEMPLATES_URL) {
+.controller('SettingsController', ['$scope', '$state', 'Notifications', 'SettingsService', 'StateManager', 'DEFAULT_TEMPLATES_URL', 'Authentication',
+function ($scope, $state, Notifications, SettingsService, StateManager, DEFAULT_TEMPLATES_URL, Authentication) {
 
   $scope.state = {
     actionInProgress: false
@@ -73,6 +73,8 @@ function ($scope, $state, Notifications, SettingsService, StateManager, DEFAULT_
   }
 
   function initView() {
+    $scope.isAdmin = isAdminAccess(Authentication);
+	
     SettingsService.settings()
     .then(function success(data) {
       var settings = data;

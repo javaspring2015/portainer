@@ -1,4 +1,4 @@
-<rd-header>
+<rd-header ng-if="isAdmin">
   <rd-header-title title="Teams">
     <a data-toggle="tooltip" title="Refresh" ui-sref="portainer.teams" ui-sref-opts="{reload: true}">
       <i class="fa fa-sync" aria-hidden="true"></i>
@@ -64,7 +64,7 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row" ng-if="isAdmin">
   <div class="col-sm-12">
     <teams-datatable
     title="Teams" title-icon="fa-users"

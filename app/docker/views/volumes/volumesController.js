@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('VolumesController', ['$q', '$scope', '$state', 'VolumeService', 'ServiceService', 'VolumeHelper', 'Notifications',
-function ($q, $scope, $state, VolumeService, ServiceService, VolumeHelper, Notifications) {
+.controller('VolumesController', ['$q', '$scope', '$state', 'VolumeService', 'ServiceService', 'VolumeHelper', 'Notifications', 'Authentication',
+function ($q, $scope, $state, VolumeService, ServiceService, VolumeHelper, Notifications, Authentication) {
 
   $scope.removeAction = function (selectedItems) {
     var actionCount = selectedItems.length;
@@ -24,6 +24,8 @@ function ($q, $scope, $state, VolumeService, ServiceService, VolumeHelper, Notif
   };
 
   function initView() {
+	$scope.isAdmin = isAdminRole(Authentication);
+	
     var endpointProvider = $scope.applicationState.endpoint.mode.provider;
     var endpointRole = $scope.applicationState.endpoint.mode.role;
 

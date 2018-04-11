@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('ServicesController', ['$q', '$scope', '$state', 'Service', 'ServiceService', 'ServiceHelper', 'Notifications', 'Task', 'Node', 'ModalService', 'EndpointProvider',
-function ($q, $scope, $state, Service, ServiceService, ServiceHelper, Notifications, Task, Node, ModalService, EndpointProvider) {
+.controller('ServicesController', ['$q', '$scope', '$state', 'Service', 'ServiceService', 'ServiceHelper', 'Notifications', 'Task', 'Node', 'ModalService', 'EndpointProvider', 'Authentication',
+function ($q, $scope, $state, Service, ServiceService, ServiceHelper, Notifications, Task, Node, ModalService, EndpointProvider, Authentication) {
 
   $scope.state = {
     publicURL: EndpointProvider.endpointPublicURL()
@@ -86,6 +86,8 @@ function ($q, $scope, $state, Service, ServiceService, ServiceHelper, Notificati
   }
 
   function initView() {
+	$scope.isAdmin = isAdminRole(Authentication);
+	
     $q.all({
       services: Service.query({}).$promise,
       tasks: Task.query({filters: {'desired-state': ['running','accepted']}}).$promise,

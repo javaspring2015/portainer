@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('SecretsController', ['$scope', '$state', 'SecretService', 'Notifications',
-function ($scope, $state, SecretService, Notifications) {
+.controller('SecretsController', ['$scope', '$state', 'SecretService', 'Notifications', 'Authentication',
+function ($scope, $state, SecretService, Notifications, Authentication) {
 
   $scope.removeAction = function (selectedItems) {
     var actionCount = selectedItems.length;
@@ -24,6 +24,8 @@ function ($scope, $state, SecretService, Notifications) {
   };
 
   function initView() {
+	$scope.isAdmin = isAdminRole(Authentication);
+	
     SecretService.secrets()
     .then(function success(data) {
       $scope.secrets = data;

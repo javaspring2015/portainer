@@ -1,9 +1,9 @@
-<rd-header>
+<rd-header ng-if="isAdmin">
   <rd-header-title title="Settings"></rd-header-title>
   <rd-header-content>Settings</rd-header-content>
 </rd-header>
 
-<div class="row">
+<div class="row" ng-if="isAdmin">
   <div class="col-sm-12">
     <rd-widget>
       <rd-widget-header icon="fa-cogs" title="Application settings"></rd-widget-header>
@@ -130,7 +130,7 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row" ng-if="isAdmin">
   <div class="col-sm-12">
     <rd-widget>
       <rd-widget-header icon="fa-tags" title="Hidden containers"></rd-widget-header>

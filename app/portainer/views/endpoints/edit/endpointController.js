@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('EndpointController', ['$scope', '$state', '$transition$', '$filter', 'EndpointService', 'Notifications',
-function ($scope, $state, $transition$, $filter, EndpointService, Notifications) {
+.controller('EndpointController', ['$scope', '$state', '$transition$', '$filter', 'EndpointService', 'Notifications', 'Authenctication',
+function ($scope, $state, $transition$, $filter, EndpointService, Notifications, Authenctication) {
 
   if (!$scope.applicationState.application.endpointManagement) {
     $state.go('portainer.endpoints');
@@ -52,6 +52,8 @@ function ($scope, $state, $transition$, $filter, EndpointService, Notifications)
   };
 
   function initView() {
+    $scope.isAdmin = isAdminAccess(Authenctication);
+	
     EndpointService.endpoint($transition$.params().id)
     .then(function success(data) {
       var endpoint = data;

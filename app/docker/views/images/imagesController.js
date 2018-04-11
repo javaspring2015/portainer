@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('ImagesController', ['$scope', '$state', 'ImageService', 'Notifications', 'ModalService',
-function ($scope, $state, ImageService, Notifications, ModalService) {
+.controller('ImagesController', ['$scope', '$state', 'ImageService', 'Notifications', 'ModalService', 'Authentication',
+function ($scope, $state, ImageService, Notifications, ModalService, Authentication) {
   $scope.state = {
     actionInProgress: false
   };
@@ -57,6 +57,8 @@ function ($scope, $state, ImageService, Notifications, ModalService) {
   };
 
   function initView() {
+	$scope.isAdmin = isAdminRole(Authentication);
+	
     var endpointProvider = $scope.applicationState.endpoint.mode.provider;
     var apiVersion = $scope.applicationState.endpoint.apiVersion;
 
