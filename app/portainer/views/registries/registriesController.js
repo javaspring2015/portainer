@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('RegistriesController', ['$q', '$scope', '$state', 'RegistryService', 'DockerHubService', 'ModalService', 'Notifications', 'PaginationService',
-function ($q, $scope, $state, RegistryService, DockerHubService, ModalService, Notifications, PaginationService) {
+.controller('RegistriesController', ['$q', '$scope', '$state', 'RegistryService', 'DockerHubService', 'ModalService', 'Notifications', 'PaginationService', 'Authentication',
+function ($q, $scope, $state, RegistryService, DockerHubService, ModalService, Notifications, PaginationService, Authentication) {
 
   $scope.state = {
     actionInProgress: false
@@ -58,6 +58,7 @@ function ($q, $scope, $state, RegistryService, DockerHubService, ModalService, N
   }
 
   function initView() {
+    $scope.isAdmin = isAdminAccess(Authentication);
     $q.all({
       registries: RegistryService.registries(),
       dockerhub: DockerHubService.dockerhub()

@@ -34,3 +34,9 @@ function ($scope, $cookieStore, StateManager) {
     $scope.$apply();
   };
 }]);
+
+function isAdminAccess(Authentication) {
+  var userDetails = Authentication.getUserDetails();
+  var isAdmin = userDetails.role === 1 ? true: false;
+  return isAdmin;
+}

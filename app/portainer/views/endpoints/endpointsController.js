@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('EndpointsController', ['$scope', '$state', '$filter',  'EndpointService', 'Notifications', 'SystemService', 'EndpointProvider',
-function ($scope, $state, $filter, EndpointService, Notifications, SystemService, EndpointProvider) {
+.controller('EndpointsController', ['$scope', '$state', '$filter',  'EndpointService', 'Notifications', 'SystemService', 'EndpointProvider', 'Authentication',
+function ($scope, $state, $filter, EndpointService, Notifications, SystemService, EndpointProvider, Authentication) {
   $scope.state = {
     uploadInProgress: false,
     actionInProgress: false
@@ -92,6 +92,8 @@ function ($scope, $state, $filter, EndpointService, Notifications, SystemService
       $scope.endpoints = [];
     });
   }
+
+  $scope.isAdmin = isAdminAccess(Authentication);
 
   fetchEndpoints();
 }]);
