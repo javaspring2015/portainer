@@ -24,7 +24,7 @@ function ($scope, $state, SecretService, Notifications, Authentication) {
   };
 
   function initView() {
-	$scope.isAdmin = isAdminRole(Authentication);
+	$scope.isAdmin = isAdminAccess(Authentication);
 	
     SecretService.secrets()
     .then(function success(data) {

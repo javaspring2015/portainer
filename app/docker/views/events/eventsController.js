@@ -3,7 +3,7 @@ angular.module('portainer.docker')
 function ($scope, Notifications, SystemService, Authentication) {
 
   function initView() {
-	$scope.isAdmin = isAdminRole(Authentication);
+	$scope.isAdmin = isAdminAccess(Authentication);
 	
     var from = moment().subtract(24, 'hour').unix();
     var to = moment().unix();

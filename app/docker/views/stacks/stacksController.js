@@ -38,7 +38,6 @@ function ($scope, $state, Notifications, StackService, ModalService, Authenticat
   }
 
   function initView() {
-	//$scope.isAdmin = isAdminRole(Authentication);
 	var userDetails = Authentication.getUserDetails();
     var isAdmin = userDetails.role === 1 ? true: false;
     $scope.isAdmin = isAdmin;

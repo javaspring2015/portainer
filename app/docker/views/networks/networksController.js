@@ -24,7 +24,7 @@ function ($scope, $state, NetworkService, Notifications, Authentication) {
   };
 
   function initView() {
-	$scope.isAdmin = isAdminRole(Authentication);
+	$scope.isAdmin = isAdminAccess(Authentication);
 	
     NetworkService.networks(true, true, true, true)
     .then(function success(data) {
