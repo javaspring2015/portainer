@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('SettingsAuthenticationController', ['$q', '$scope', 'Notifications', 'SettingsService', 'FileUploadService',
-function ($q, $scope, Notifications, SettingsService, FileUploadService) {
+.controller('SettingsAuthenticationController', ['$q', '$scope', 'Notifications', 'SettingsService', 'FileUploadService', 'Authentication',
+function ($q, $scope, Notifications, SettingsService, FileUploadService,Authentication) {
 
   $scope.state = {
     successfulConnectivityCheck: false,
@@ -84,6 +84,8 @@ function ($q, $scope, Notifications, SettingsService, FileUploadService) {
   }
 
   function initView() {
+    $scope.isAdmin = isAdminAccess(Authentication);
+	
     SettingsService.settings()
     .then(function success(data) {
       var settings = data;

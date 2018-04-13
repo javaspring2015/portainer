@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('RegistryController', ['$scope', '$state', '$transition$', '$filter', 'RegistryService', 'Notifications',
-function ($scope, $state, $transition$, $filter, RegistryService, Notifications) {
+.controller('RegistryController', ['$scope', '$state', '$transition$', '$filter', 'RegistryService', 'Notifications', 'Authentication',
+function ($scope, $state, $transition$, $filter, RegistryService, Notifications, Authentication) {
 
   $scope.state = {
     actionInProgress: false
@@ -28,6 +28,8 @@ function ($scope, $state, $transition$, $filter, RegistryService, Notifications)
   };
 
   function initView() {
+    $scope.isAdmin = isAdminAccess(Authentication);
+	
     var registryID = $transition$.params().id;
     RegistryService.registry(registryID)
     .then(function success(data) {
