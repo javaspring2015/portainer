@@ -29,7 +29,6 @@ angular.module('portainer')
   };
 }]);
 
-
 function initAuthentication(authManager, Authentication, $rootScope, $state) {
   authManager.checkAuthOnRefresh();
   authManager.redirectWhenUnauthenticated();
@@ -47,10 +46,4 @@ function initAnalytics(Analytics, $rootScope) {
     Analytics.trackPage(toState.url);
     Analytics.pageView();
   });
-}
-
-function isAdminRole(Authentication) {
-  var userDetails = Authentication.getUserDetails();
-  var isAdmin = userDetails.role === 1 ? true: false;
-  return isAdmin;
 }

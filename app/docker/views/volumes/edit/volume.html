@@ -1,10 +1,11 @@
-<rd-header>
+<rd-header ng-if="isAdmin">
   <rd-header-title title="Volume details"></rd-header-title>
   <rd-header-content>
     <a ui-sref="docker.volumes">Volumes</a> &gt; <a ui-sref="docker.volumes.volume({id: volume.Id})">{{ volume.Id }}</a>
   </rd-header-content>
 </rd-header>
 
+<div ng-if="isAdmin">
 <div class="row" ng-if="volume">
   <div class="col-sm-12">
     <rd-widget>
@@ -93,4 +94,5 @@
       </rd-widget-body>
     </rd-widget>
   </div>
+</div>
 </div>

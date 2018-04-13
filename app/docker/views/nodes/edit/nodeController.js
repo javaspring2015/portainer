@@ -1,6 +1,8 @@
 angular.module('portainer.docker')
-.controller('NodeController', ['$scope', '$state', '$transition$', 'LabelHelper', 'Node', 'NodeHelper', 'Task', 'Notifications',
-function ($scope, $state, $transition$, LabelHelper, Node, NodeHelper, Task, Notifications) {
+.controller('NodeController', ['$scope', '$state', '$transition$', 'LabelHelper', 'Node', 'NodeHelper', 'Task', 'Notifications', 'Authentication',
+function ($scope, $state, $transition$, LabelHelper, Node, NodeHelper, Task, Notifications, Authentication) {
+
+  $scope.isAdmin = isAdminAccess(Authentication);
 
   $scope.loading = true;
   $scope.tasks = [];

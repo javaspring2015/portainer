@@ -2,6 +2,8 @@ angular.module('portainer.docker')
 .controller('CreateSecretController', ['$scope', '$state', 'Notifications', 'SecretService', 'LabelHelper', 'Authentication', 'ResourceControlService', 'FormValidator',
 function ($scope, $state, Notifications, SecretService, LabelHelper, Authentication, ResourceControlService, FormValidator) {
 
+  $scope.isAdmin = isAdminAccess(Authentication);
+
   $scope.formValues = {
     Name: '',
     Data: '',

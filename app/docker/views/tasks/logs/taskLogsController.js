@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('TaskLogsController', ['$scope', '$transition$', '$interval', 'TaskService', 'ServiceService', 'Notifications',
-function ($scope, $transition$, $interval, TaskService, ServiceService, Notifications) {
+.controller('TaskLogsController', ['$scope', '$transition$', '$interval', 'TaskService', 'ServiceService', 'Notifications', 'Authentication',
+function ($scope, $transition$, $interval, TaskService, ServiceService, Notifications, Authentication) {
   $scope.state = {
     refreshRate: 3,
     lineCount: 2000
@@ -53,6 +53,8 @@ function ($scope, $transition$, $interval, TaskService, ServiceService, Notifica
   }
 
   function initView() {
+    $scope.isAdmin = isAdminAccess(Authentication);
+	
     TaskService.task($transition$.params().id)
     .then(function success(data) {
       var task = data;

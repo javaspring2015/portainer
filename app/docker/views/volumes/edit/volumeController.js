@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('VolumeController', ['$scope', '$state', '$transition$', 'VolumeService', 'ContainerService', 'Notifications',
-function ($scope, $state, $transition$, VolumeService, ContainerService, Notifications) {
+.controller('VolumeController', ['$scope', '$state', '$transition$', 'VolumeService', 'ContainerService', 'Notifications', 'Authentication',
+function ($scope, $state, $transition$, VolumeService, ContainerService, Notifications, Authentication) {
 
   $scope.removeVolume = function removeVolume() {
     VolumeService.remove($scope.volume)
@@ -20,6 +20,8 @@ function ($scope, $state, $transition$, VolumeService, ContainerService, Notific
   }
 
   function initView() {
+    $scope.isAdmin = isAdminAccess(Authentication);
+	
     VolumeService.volume($transition$.params().id)
     .then(function success(data) {
       var volume = data;

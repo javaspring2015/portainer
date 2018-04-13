@@ -119,6 +119,8 @@ function ($q, $scope, $state, PluginService, Notifications, NetworkService, Labe
   };
 
   function initView() {
+    $scope.isAdmin = isAdminAccess(Authentication);
+	
     var endpointProvider = $scope.applicationState.endpoint.mode.provider;
     var apiVersion = $scope.applicationState.endpoint.apiVersion;
     if(endpointProvider !== 'DOCKER_SWARM') {

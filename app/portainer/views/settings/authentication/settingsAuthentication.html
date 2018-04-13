@@ -1,11 +1,11 @@
-<rd-header>
+<rd-header ng-if="isAdmin">
   <rd-header-title title="Authentication settings"></rd-header-title>
   <rd-header-content>
     <a ui-sref="portainer.settings">Settings</a> &gt; Authentication
   </rd-header-content>
 </rd-header>
 
-<div class="row">
+<div class="row" ng-if="isAdmin">
   <div class="col-sm-12">
     <rd-widget>
       <rd-widget-header icon="fa-users" title="Authentication"></rd-widget-header>

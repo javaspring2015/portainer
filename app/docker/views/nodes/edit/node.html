@@ -1,4 +1,4 @@
-<rd-header>
+<rd-header ng-if="isAdmin">
   <rd-header-title title="Node details">
     <a data-toggle="tooltip" title="Refresh" ui-sref="docker.nodes.node({id: node.Id})" ui-sref-opts="{reload: true}">
       <i class="fa fa-sync" aria-hidden="true"></i>
@@ -9,6 +9,7 @@
   </rd-header-content>
 </rd-header>
 
+<div ng-if="isAdmin">
 <div class="row" ng-if="!node">
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div ng-if="loading">
@@ -240,4 +241,5 @@
     show-text-filter="true"
     ></node-tasks-datatable>
   </div>
+</div>
 </div>

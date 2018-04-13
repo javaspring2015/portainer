@@ -1,11 +1,11 @@
-<rd-header>
+<rd-header ng-if="isAdmin">
   <rd-header-title title="Registry access"></rd-header-title>
   <rd-header-content>
     <a ui-sref="portainer.registries">Registries</a> &gt; <a ui-sref="portainer.registries.registry({id: registry.Id})">{{ registry.Name }}</a> &gt; Access management
   </rd-header-content>
 </rd-header>
 
-<div class="row" ng-if="registry">
+<div class="row" ng-if="registry && isAdmin">
   <div class="col-lg-12 col-md-12 col-xs-12">
     <rd-widget>
       <rd-widget-header icon="fa-plug" title="Registry"></rd-widget-header>
@@ -39,5 +39,5 @@
   </div>
 </div>
 
-<por-access-management ng-if="registry" access-controlled-entity="registry" update-access="updateAccess(userAccesses, teamAccesses)">
+<por-access-management ng-if="registry && isAdmin" access-controlled-entity="registry" update-access="updateAccess(userAccesses, teamAccesses)">
 </por-access-management>

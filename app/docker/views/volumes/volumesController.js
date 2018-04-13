@@ -24,7 +24,7 @@ function ($q, $scope, $state, VolumeService, ServiceService, VolumeHelper, Notif
   };
 
   function initView() {
-	$scope.isAdmin = isAdminRole(Authentication);
+	$scope.isAdmin = isAdminAccess(Authentication);
 	
     var endpointProvider = $scope.applicationState.endpoint.mode.provider;
     var endpointRole = $scope.applicationState.endpoint.mode.role;

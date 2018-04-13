@@ -3,7 +3,7 @@ angular.module('portainer.docker')
 function ($q, $scope, SystemService, Notifications, Authentication) {
 
   function initView() {
-	$scope.isAdmin = isAdminRole(Authentication);
+	$scope.isAdmin = isAdminAccess(Authentication);
 	
     $q.all({
       version: SystemService.version(),

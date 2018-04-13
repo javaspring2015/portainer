@@ -1,11 +1,11 @@
-<rd-header>
+<rd-header ng-if="isAdmin">
   <rd-header-title title="Build image"></rd-header-title>
   <rd-header-content>
     <a ui-sref="docker.images">Images</a> &gt; Build image
   </rd-header-content>
 </rd-header>
 
-<div class="row">
+<div class="row" ng-if="isAdmin">
   <div class="col-sm-12">
     <rd-widget>
       <rd-widget-body>

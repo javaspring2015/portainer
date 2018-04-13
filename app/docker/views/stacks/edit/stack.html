@@ -1,4 +1,4 @@
-<rd-header>
+<rd-header ng-if="isAdmin">
   <rd-header-title title="Stack details">
     <a data-toggle="tooltip" title="Refresh" ui-sref="docker.stacks.stack({id: stack.Id})" ui-sref-opts="{reload: true}">
       <i class="fa fa-sync" aria-hidden="true"></i>
@@ -11,14 +11,14 @@
 
 <!-- access-control-panel -->
 <por-access-control-panel
-  ng-if="stack && applicationState.application.authentication"
+  ng-if="stack && applicationState.application.authentication && isAdmin"
   resource-id="stack.Name"
   resource-control="stack.ResourceControl"
   resource-type="'stack'">
 </por-access-control-panel>
 <!-- !access-control-panel -->
 
-<div class="row">
+<div class="row" ng-if="isAdmin">
   <div class="col-sm-12">
     <stack-services-datatable
       title="Services" title-icon="fa-list-alt"
@@ -31,7 +31,7 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row" ng-if="isAdmin">
   <div class="col-sm-12">
     <tasks-datatable
       title="Tasks" title-icon="fa-tasks"
@@ -45,7 +45,7 @@
   </div>
 </div>
 
-<div class="row" ng-if="stackFileContent">
+<div class="row" ng-if="stackFileContent && isAdmin">
   <div class="col-sm-12">
     <rd-widget>
       <rd-widget-header icon="fa-pencil-alt" title="Stack editor"></rd-widget-header>

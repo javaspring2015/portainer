@@ -24,7 +24,7 @@ function ($scope, $state, ConfigService, Notifications, Authentication) {
   };
 
   function initView() {
-    $scope.isAdmin = isAdminRole(Authentication);
+    $scope.isAdmin = isAdminAccess(Authentication);
 	
     ConfigService.configs()
     .then(function success(data) {

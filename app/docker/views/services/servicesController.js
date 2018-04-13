@@ -86,7 +86,7 @@ function ($q, $scope, $state, Service, ServiceService, ServiceHelper, Notificati
   }
 
   function initView() {
-	$scope.isAdmin = isAdminRole(Authentication);
+	$scope.isAdmin = isAdminAccess(Authentication);
 	
     $q.all({
       services: Service.query({}).$promise,

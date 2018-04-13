@@ -1,6 +1,8 @@
 angular.module('portainer.app')
-.controller('CreateRegistryController', ['$scope', '$state', 'RegistryService', 'Notifications',
-function ($scope, $state, RegistryService, Notifications) {
+.controller('CreateRegistryController', ['$scope', '$state', 'RegistryService', 'Notifications', 'Authentication',
+function ($scope, $state, RegistryService, Notifications, Authentication) {
+
+  $scope.isAdmin = isAdminAccess(Authentication);
 
   $scope.state = {
     RegistryType: 'quay',

@@ -1,6 +1,6 @@
 angular.module('portainer.app')
-.controller('UserController', ['$q', '$scope', '$state', '$transition$', 'UserService', 'ModalService', 'Notifications', 'SettingsService',
-function ($q, $scope, $state, $transition$, UserService, ModalService, Notifications, SettingsService) {
+.controller('UserController', ['$q', '$scope', '$state', '$transition$', 'UserService', 'ModalService', 'Notifications', 'SettingsService', 'Authentication',
+function ($q, $scope, $state, $transition$, UserService, ModalService, Notifications, SettingsService, Authentication) {
 
   $scope.state = {
     updatePasswordError: ''
@@ -58,6 +58,8 @@ function ($q, $scope, $state, $transition$, UserService, ModalService, Notificat
   }
 
   function initView() {
+    $scope.isAdmin = isAdminAccess(Authentication);
+	
     $q.all({
       user: UserService.user($transition$.params().id),
       settings: SettingsService.publicSettings()

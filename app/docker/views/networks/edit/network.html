@@ -1,10 +1,11 @@
-<rd-header>
+<rd-header ng-if="isAdmin">
   <rd-header-title title="Network details"></rd-header-title>
   <rd-header-content>
     <a ui-sref="docker.networks">Networks</a> &gt; <a ui-sref="docker.networks.network({id: network.Id})">{{ network.Name }}</a>
   </rd-header-content>
 </rd-header>
 
+<div ng-if="isAdmin">
 <div class="row">
   <div class="col-lg-12 col-md-12 col-xs-12">
     <rd-widget>
@@ -102,4 +103,5 @@
       </rd-widget-body>
     </rd-widget>
   </div>
+</div>
 </div>
