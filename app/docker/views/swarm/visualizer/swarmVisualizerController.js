@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('SwarmVisualizerController', ['$q', '$scope', '$document', '$interval', 'NodeService', 'ServiceService', 'TaskService', 'Notifications',
-function ($q, $scope, $document, $interval, NodeService, ServiceService, TaskService, Notifications) {
+.controller('SwarmVisualizerController', ['$q', '$scope', '$document', '$interval', 'NodeService', 'ServiceService', 'TaskService', 'Notifications', 'Authentication',
+function ($q, $scope, $document, $interval, NodeService, ServiceService, TaskService, Notifications, Authentication) {
 
   $scope.state = {
     ShowInformationPanel: true,
@@ -92,6 +92,8 @@ function ($q, $scope, $document, $interval, NodeService, ServiceService, TaskSer
   }
 
   function initView() {
+    $scope.isAdmin = isAdminAccess(Authentication);
+	
     $q.all({
       nodes: NodeService.nodes(),
       services: ServiceService.services(),

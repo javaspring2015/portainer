@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('ContainerController', ['$q', '$scope', '$state','$transition$', '$filter', 'Container', 'Commit', 'ContainerHelper', 'ContainerService', 'ImageHelper', 'Network', 'NetworkService', 'Notifications', 'ModalService', 'ResourceControlService', 'RegistryService', 'ImageService',
-function ($q, $scope, $state, $transition$, $filter, Container, Commit, ContainerHelper, ContainerService, ImageHelper, Network, NetworkService, Notifications, ModalService, ResourceControlService, RegistryService, ImageService) {
+.controller('ContainerController', ['$q', '$scope', '$state','$transition$', '$filter', 'Container', 'Commit', 'ContainerHelper', 'ContainerService', 'ImageHelper', 'Network', 'NetworkService', 'Notifications', 'ModalService', 'ResourceControlService', 'RegistryService', 'ImageService', 'Authentication',
+function ($q, $scope, $state, $transition$, $filter, Container, Commit, ContainerHelper, ContainerService, ImageHelper, Network, NetworkService, Notifications, ModalService, ResourceControlService, RegistryService, ImageService, Authentication) {
   $scope.activityTime = 0;
   $scope.portBindings = [];
 
@@ -268,6 +268,8 @@ function ($q, $scope, $state, $transition$, $filter, Container, Commit, Containe
       $scope.state.joinNetworkInProgress = false;
     });
   };
+
+  $scope.isAdmin = isAdminAccess(Authentication);
 
   var provider = $scope.applicationState.endpoint.mode.provider;
   var apiVersion = $scope.applicationState.endpoint.apiVersion;

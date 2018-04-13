@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('ConfigController', ['$scope', '$transition$', '$state', 'ConfigService', 'Notifications',
-function ($scope, $transition$, $state, ConfigService, Notifications) {
+.controller('ConfigController', ['$scope', '$transition$', '$state', 'ConfigService', 'Notifications', 'Authentication',
+function ($scope, $transition$, $state, ConfigService, Notifications, Authentication) {
 
   $scope.removeConfig = function removeConfig(configId) {
     ConfigService.remove(configId)
@@ -14,6 +14,8 @@ function ($scope, $transition$, $state, ConfigService, Notifications) {
   };
 
   function initView() {
+    $scope.isAdmin = isAdminAccess(Authentication);
+	
     ConfigService.config($transition$.params().id)
     .then(function success(data) {
       $scope.config = data;

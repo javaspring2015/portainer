@@ -1,4 +1,4 @@
-<rd-header>
+<rd-header ng-if="isAdmin">
   <rd-header-title title="Container logs"></rd-header-title>
   <rd-header-content>
     <a ui-sref="docker.containers">Containers</a> &gt; <a ui-sref="docker.containers.container({id: container.Id})">{{ container.Name|trimcontainername }}</a> &gt; Logs
@@ -6,5 +6,5 @@
 </rd-header>
 
 <log-viewer
-  data="logs" ng-if="logs" log-collection-change="changeLogCollection"
+  data="logs" ng-if="logs && isAdmin" log-collection-change="changeLogCollection"
 ></log-viewer>

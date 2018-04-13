@@ -1,7 +1,9 @@
 angular.module('portainer.docker')
-.controller('BuildImageController', ['$scope', '$state', 'BuildService', 'Notifications',
-function ($scope, $state, BuildService, Notifications) {
+.controller('BuildImageController', ['$scope', '$state', 'BuildService', 'Notifications', 'Authentication',
+function ($scope, $state, BuildService, Notifications, Authentication) {
 
+    $scope.isAdmin = isAdminAccess(Authentication);
+	
 	$scope.state = {
 		BuildType: 'editor',
 		actionInProgress: false,

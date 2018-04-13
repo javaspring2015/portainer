@@ -1,4 +1,4 @@
-<rd-header>
+<rd-header ng-if="isAdmin">
   <rd-header-title title="Task details"></rd-header-title>
   <rd-header-content ng-if="task && service">
     <a ui-sref="docker.services">Services</a> &gt; <a ui-sref="docker.services.service({id: service.Id })">{{ service.Name }}</a> &gt; <a ui-sref="docker.tasks.task({id: task.Id })">{{ task.Id }}</a> &gt; Logs
@@ -6,5 +6,5 @@
 </rd-header>
 
 <log-viewer
-  data="logs" ng-if="logs" log-collection-change="changeLogCollection"
+  data="logs" ng-if="logs && isAdmin" log-collection-change="changeLogCollection"
 ></log-viewer>

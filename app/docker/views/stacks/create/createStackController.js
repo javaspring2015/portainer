@@ -2,6 +2,8 @@ angular.module('portainer.docker')
 .controller('CreateStackController', ['$scope', '$state', 'StackService', 'Authentication', 'Notifications', 'FormValidator', 'ResourceControlService', 'FormHelper',
 function ($scope, $state, StackService, Authentication, Notifications, FormValidator, ResourceControlService, FormHelper) {
 
+  $scope.isAdmin = isAdminAccess(Authentication);
+
   $scope.formValues = {
     Name: '',
     StackFileContent: '',

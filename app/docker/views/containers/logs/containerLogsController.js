@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('ContainerLogsController', ['$scope', '$transition$', '$interval', 'ContainerService', 'Notifications',
-function ($scope, $transition$, $interval, ContainerService, Notifications) {
+.controller('ContainerLogsController', ['$scope', '$transition$', '$interval', 'ContainerService', 'Notifications', 'Authentication',
+function ($scope, $transition$, $interval, ContainerService, Notifications, Authentication) {
   $scope.state = {
     refreshRate: 3,
     lineCount: 2000
@@ -57,6 +57,8 @@ function ($scope, $transition$, $interval, ContainerService, Notifications) {
   }
 
   function initView() {
+    $scope.isAdmin = isAdminAccess(Authentication);
+	
     ContainerService.container($transition$.params().id)
     .then(function success(data) {
       $scope.container = data;

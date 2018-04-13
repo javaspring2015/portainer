@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('StackController', ['$q', '$scope', '$state', '$transition$', 'StackService', 'NodeService', 'ServiceService', 'TaskService', 'ServiceHelper', 'Notifications', 'FormHelper', 'EndpointProvider',
-function ($q, $scope, $state, $transition$, StackService, NodeService, ServiceService, TaskService, ServiceHelper, Notifications, FormHelper, EndpointProvider) {
+.controller('StackController', ['$q', '$scope', '$state', '$transition$', 'StackService', 'NodeService', 'ServiceService', 'TaskService', 'ServiceHelper', 'Notifications', 'FormHelper', 'EndpointProvider', 'Authentication',
+function ($q, $scope, $state, $transition$, StackService, NodeService, ServiceService, TaskService, ServiceHelper, Notifications, FormHelper, EndpointProvider, Authentication) {
 
   $scope.state = {
     actionInProgress: false,
@@ -39,6 +39,8 @@ function ($q, $scope, $state, $transition$, StackService, NodeService, ServiceSe
   };
 
   function initView() {
+    $scope.isAdmin = isAdminAccess(Authentication);
+	
     var stackId = $transition$.params().id;
     var apiVersion = $scope.applicationState.endpoint.apiVersion;
 

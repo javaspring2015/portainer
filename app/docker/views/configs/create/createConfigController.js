@@ -1,7 +1,7 @@
 angular.module('portainer.docker')
 .controller('CreateConfigController', ['$scope', '$state', 'Notifications', 'ConfigService', 'Authentication', 'FormValidator', 'ResourceControlService',
 function ($scope, $state, Notifications, ConfigService, Authentication, FormValidator, ResourceControlService) {
-
+  $scope.isAdmin = isAdminAccess(Authentication);
   $scope.formValues = {
     Name: '',
     Labels: [],
@@ -58,9 +58,9 @@ function ($scope, $state, Notifications, ConfigService, Authentication, FormVali
 
   $scope.create = function () {
     var accessControlData = $scope.formValues.AccessControlData;
-    var userDetails = Authentication.getUserDetails();
-    var isAdmin = userDetails.role === 1;
-
+    //var userDetails = Authentication.getUserDetails();
+    //var isAdmin = userDetails.role === 1;
+    var isAdmin = $scope.isAdmin;
     if ($scope.formValues.ConfigContent === '') {
       $scope.state.formValidationError = 'Config content must not be empty';
       return;

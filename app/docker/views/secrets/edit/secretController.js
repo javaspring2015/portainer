@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('SecretController', ['$scope', '$transition$', '$state', 'SecretService', 'Notifications',
-function ($scope, $transition$, $state, SecretService, Notifications) {
+.controller('SecretController', ['$scope', '$transition$', '$state', 'SecretService', 'Notifications', 'Authentication',
+function ($scope, $transition$, $state, SecretService, Notifications, Authentication) {
 
   $scope.removeSecret = function removeSecret(secretId) {
     SecretService.remove(secretId)
@@ -14,6 +14,8 @@ function ($scope, $transition$, $state, SecretService, Notifications) {
   };
 
   function initView() {
+    $scope.isAdmin = isAdminAccess(Authentication);
+	
     SecretService.secret($transition$.params().id)
     .then(function success(data) {
       $scope.secret = data;

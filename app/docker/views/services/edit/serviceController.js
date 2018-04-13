@@ -1,6 +1,6 @@
 angular.module('portainer.docker')
-.controller('ServiceController', ['$q', '$scope', '$transition$', '$state', '$location', '$timeout', '$anchorScroll', 'ServiceService', 'ConfigService', 'ConfigHelper', 'SecretService', 'ImageService', 'SecretHelper', 'Service', 'ServiceHelper', 'LabelHelper', 'TaskService', 'NodeService', 'Notifications', 'ModalService', 'PluginService',
-function ($q, $scope, $transition$, $state, $location, $timeout, $anchorScroll, ServiceService, ConfigService, ConfigHelper, SecretService, ImageService, SecretHelper, Service, ServiceHelper, LabelHelper, TaskService, NodeService, Notifications, ModalService, PluginService) {
+.controller('ServiceController', ['$q', '$scope', '$transition$', '$state', '$location', '$timeout', '$anchorScroll', 'ServiceService', 'ConfigService', 'ConfigHelper', 'SecretService', 'ImageService', 'SecretHelper', 'Service', 'ServiceHelper', 'LabelHelper', 'TaskService', 'NodeService', 'Notifications', 'ModalService', 'PluginService', 'Authentication',
+function ($q, $scope, $transition$, $state, $location, $timeout, $anchorScroll, ServiceService, ConfigService, ConfigHelper, SecretService, ImageService, SecretHelper, Service, ServiceHelper, LabelHelper, TaskService, NodeService, Notifications, ModalService, PluginService, Authentication) {
 
   $scope.state = {
     updateInProgress: false,
@@ -405,6 +405,8 @@ function ($q, $scope, $transition$, $state, $location, $timeout, $anchorScroll, 
   }
 
   function initView() {
+    $scope.isAdmin = isAdminAccess(Authentication);
+
     var apiVersion = $scope.applicationState.endpoint.apiVersion;
 
     ServiceService.service($transition$.params().id)

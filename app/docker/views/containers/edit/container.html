@@ -1,4 +1,4 @@
-<rd-header>
+<rd-header ng-if="isAdmin">
   <rd-header-title title="Container details">
   </rd-header-title>
   <rd-header-content>
@@ -6,7 +6,7 @@
   </rd-header-content>
 </rd-header>
 
-  <div class="row">
+  <div class="row" ng-if="isAdmin">
     <div class="col-lg-12 col-md-12 col-xs-12">
       <rd-widget>
         <rd-widget-header icon="fa-cogs" title="Actions"></rd-widget-header>
@@ -32,7 +32,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" ng-if="isAdmin">
     <div class="col-lg-12 col-md-12 col-xs-12">
       <rd-widget>
         <rd-widget-header icon="fa-server" title="Container status"></rd-widget-header>
@@ -100,14 +100,14 @@
 
   <!-- access-control-panel -->
   <por-access-control-panel
-    ng-if="container && applicationState.application.authentication"
+    ng-if="container && applicationState.application.authentication && isAdmin"
     resource-id="container.Id"
     resource-control="container.ResourceControl"
     resource-type="'container'">
   </por-access-control-panel>
   <!-- !access-control-panel -->
 
-  <div ng-if="container.State.Health" class="row">
+  <div ng-if="container.State.Health && isAdmin" class="row">
     <div class="col-lg-12 col-md-12 col-xs-12">
       <rd-widget>
         <rd-widget-header icon="fa-server" title="Container health"></rd-widget-header>
@@ -136,7 +136,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" ng-if="isAdmin">
     <div class="col-lg-12 col-md-12 col-xs-12">
       <rd-widget>
         <rd-widget-header icon="fa-clone" title="Create image"></rd-widget-header>
@@ -175,7 +175,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" ng-if="isAdmin">
     <div class="col-lg-12 col-md-12 col-xs-12">
       <rd-widget>
         <rd-widget-header icon="fa-server" title="Container details"></rd-widget-header>
@@ -244,7 +244,7 @@
     </div>
   </div>
 
-  <div class="row" ng-if="container.Mounts.length > 0">
+  <div class="row" ng-if="container.Mounts.length > 0 && isAdmin">
     <div class="col-lg-12 col-md-12 col-xs-12">
       <rd-widget>
         <rd-widget-header icon="fa-cubes" title="Volumes"></rd-widget-header>
@@ -269,7 +269,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" ng-if="isAdmin">
     <div class="col-sm-12">
       <container-networks-datatable
       title="Connected networks" title-icon="fa-sitemap"
