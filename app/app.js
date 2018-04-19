@@ -34,7 +34,7 @@ function initAuthentication(authManager, Authentication, $rootScope, $state) {
   authManager.redirectWhenUnauthenticated();
   Authentication.init();
   $rootScope.$on('tokenHasExpired', function() {
-    $state.go('portainer.auth', {error: 'Your session has expired'});
+    $state.go('portainer.auth', {error: '用户session已过期'});
   });
 }
 
